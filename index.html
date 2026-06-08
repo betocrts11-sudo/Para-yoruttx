@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carta Especial para Fer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;00;1,500&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght=0,300;00;1,500&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* --- ESTILOS GENERALES Y ENVOLVENTE --- */
         * {
@@ -14,7 +14,6 @@
         }
 
         body {
-            /* CAMBIO DE FUENTE: Usamos Cormorant Garamond para el cuerpo (toque vintage) */
             font-family: 'Cormorant Garamond', serif;
             background: linear-gradient(135deg, #f9e3e3, #f5d0e6);
             min-height: 100vh;
@@ -42,7 +41,7 @@
             color: #b87c9e;
             margin-bottom: 20px;
             text-align: center;
-            font-family: 'Dancing Script', cursive; /* Mantenemos Dancing Script para el título */
+            font-family: 'Dancing Script', cursive;
             font-size: 42px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
@@ -96,8 +95,8 @@
         }
 
         .kitty-image {
-            width: 150px;
-            height: 150px;
+            width: 500px;
+            height: 200px;
             object-fit: contain;
             z-index: 4;
             filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
@@ -109,21 +108,12 @@
         }
 
         @keyframes openEnvelope {
-            0% {
-                transform: rotateX(0);
-            }
-            50% {
-                transform: rotateX(-120deg);
-                opacity: 0.8;
-            }
-            100% {
-                transform: rotateX(-180deg);
-                opacity: 0;
-                display: none;
-            }
+            0% { transform: rotateX(0); }
+            50% { transform: rotateX(-120deg); opacity: 0.8; }
+            100% { transform: rotateX(-180deg); opacity: 0; display: none; }
         }
 
-        /* Fotos alrededor del sobre - DESAPARECEN AL ABRIR */
+        /* Fotos alrededor del sobre */
         .photos-around {
             position: absolute;
             width: 100%;
@@ -162,7 +152,6 @@
             z-index: 25;
         }
 
-        /* POSICIONES DE LAS FOTOS DEL SOBRE */
         .photo-1 { top: -50%; left: 10%; }
         .photo-2 { top: -50%; right: 15%; }
         .photo-3 { bottom: -50%; left: 10%; }
@@ -170,21 +159,19 @@
         .photo-5 { top:50%; left: 2%; transform: translateY(-50%); }
         .photo-6 { top: 50%; right: 3%; transform: translateY(-50%); }
 
-        /* Corazones flotantes del BODY */
+        /* Corazones flotantes */
         .hearts { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
         .heart { position: absolute; width: 20px; height: 20px; background-color: #ff9ec0; transform: rotate(45deg); opacity: 0.7; animation: float 6s infinite ease-in-out; }
         .heart::before, .heart::after { content: ''; position: absolute; width: 20px; height: 20px; background-color: #ff9ec0; border-radius: 50%; }
         .heart::before { top: -10px; left: 0; }
         .heart::after { top: 0; left: -10px; }
         @keyframes float { 0%, 100% { transform: translateY(0) rotate(45deg); } 50% { transform: translateY(-20px) rotate(45deg); } 100% { transform: translateY(0) rotate(45deg); } }
-        /* Efectos de brillo del sobre */
+        
         .sparkles { position: absolute; width: 100%; height: 100%; pointer-events: none; z-index: 20; display: none; }
         .sparkle { position: absolute; width: 10px; height: 10px; background-color: white; border-radius: 50%; animation: sparkle 1s forwards; }
         @keyframes sparkle { 0% { transform: scale(0); opacity: 1; } 100% { transform: scale(1); opacity: 0; } }
 
-        
         /* --- ESTILOS DE LA CARTA ABIERTA --- */
-
         .letter-wrapper {
             position: relative;
             width: 100%;
@@ -212,103 +199,72 @@
             z-index: 10; 
             overflow: hidden;
             margin: 0 20px; 
-
-            /* --- BORDES CON FLORES, CORAZONES Y ESTRELLAS --- */
             border: 5px solid #ff9ec0; 
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3Cpath id='heart' d='M50,15 A20,20 0 0,1 70,35 A20,20 0 0,1 50,55 A20,20 0 0,1 30,35 A20,20 0 0,1 50,15 Z' /%3E%3Cpath id='star' d='M50,0 L61.8,35.3 L97.6,38.2 L70.7,60.8 L79.4,95.1 L50,77 L20.6,95.1 L29.3,60.8 L2.4,38.2 L38.2,35.3 Z' /%3E%3Cpath id='flower-petal' d='M0,0 Q10,5 0,10 Q-10,5 0,0 Z' /%3E%3Cg id='flower'%3E%3Ccircle cx='0' cy='0' r='5' fill='%23ffb3d9'/%3E%3Cg fill='%23e6a4c1'%3E%3Cuse href='%23flower-petal' transform='rotate(0)'/%3E%3Cuse href='%23flower-petal' transform='rotate(45)'/%3E%3Cuse href='%23flower-petal' transform='rotate(90)'/%3E%3Cuse href='%23flower-petal' transform='rotate(135)'/%3E%3Cuse href='%23flower-petal' transform='rotate(180)'/%3E%3Cuse href='%23flower-petal' transform='rotate(225)'/%3E%3Cuse href='%23flower-petal' transform='rotate(270)'/%3E%3Cuse href='%23flower-petal' transform='rotate(315)'/%3E%3C/g%3E%3C/g%3E%3C/defs%3E%3Crect x='0' y='0' width='200' height='200' fill='none' /%3E%3C!-- Elementos de diferentes tamaños --%3E%3Cg transform='translate(20,20) scale(0.2)'%3E%3Cuse href='%23heart' fill='%23ffb3d9'/%3E%3C/g%3E%3Cg transform='translate(50,10) scale(0.15)'%3E%3Cuse href='%23star' fill='%23e6a4c1'/%3E%3C/g%3E%3Cg transform='translate(80,25) scale(0.18)'%3E%3Cuse href='%23flower'/%3E%3C/g%3E%3Cg transform='translate(110,15) scale(0.22)'%3E%3Cuse href='%23heart' fill='%23ffb3d9'/%3E%3C/g%3E%3Cg transform='translate(140,22) scale(0.12)'%3E%3Cuse href='%23star' fill='%23e6a4c1'/%3E%3C/g%3E%3Cg transform='translate(170,18) scale(0.25)'%3E%3Cuse href='%23flower'/%3E%3C/g%3E%3C/svg%3E");
-            background-size: 150px 150px; /* Ajusta el tamaño del patrón para que se repita más uniformemente */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3Cpath id='heart' d='M50,15 A20,20 0 0,1 70,35 A20,20 0 0,1 50,55 A20,20 0 0,1 30,35 A20,20 0 0,1 50,15 Z' /%3E%3Cpath id='star' d='M50,0 L61.8,35.3 L97.6,38.2 L70.7,60.8 L79.4,95.1 L50,77 L20.6,95.1 L29.3,60.8 L2.4,38.2 L38.2,35.3 Z' /%3E%3Cpath id='flower-petal' d='M0,0 Q10,5 0,10 Q-10,5 0,0 Z' /%3E%3Cg id='flower'%3E%3Ccircle cx='0' cy='0' r='5' fill='%23ffb3d9'/%3E%3Cg fill='%23e6a4c1'%3E%3Cuse href='%23flower-petal' transform='rotate(0)'/%3E%3Cuse href='%23flower-petal' transform='rotate(45)'/%3E%3Cuse href='%23flower-petal' transform='rotate(90)'/%3E%3Cuse href='%23flower-petal' transform='rotate(135)'/%3E%3Cuse href='%23flower-petal' transform='rotate(180)'/%3E%3Cuse href='%23flower-petal' transform='rotate(225)'/%3E%3Cuse href='%23flower-petal' transform='rotate(270)'/%3E%3Cuse href='%23flower-petal' transform='rotate(315)'/%3E%3C/g%3E%3C/g%3E%3C/defs%3E%3Crect x='0' y='0' width='200' height='200' fill='none' /%3E%3Cg transform='translate(20,20) scale(0.2)'%3E%3Cuse href='%23heart' fill='%23ffb3d9'/%3E%3C/g%3E%3Cg transform='translate(50,10) scale(0.15)'%3E%3Cuse href='%23star' fill='%23e6a4c1'/%3E%3C/g%3E%3Cg transform='translate(80,25) scale(0.18)'%3E%3Cuse href='%23flower'/%3E%3C/g%3E%3Cg transform='translate(110,15) scale(0.22)'%3E%3Cuse href='%23heart' fill='%23ffb3d9'/%3E%3C/g%3E%3Cg transform='translate(140,22) scale(0.12)'%3E%3Cuse href='%23star' fill='%23e6a4c1'/%3E%3C/g%3E%3Cg transform='translate(170,18) scale(0.25)'%3E%3Cuse href='%23flower'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: 150px 150px; 
             background-repeat: round; 
             background-origin: border-box; 
             background-clip: border-box; 
             border-image: linear-gradient(45deg, #ff9ec0, #e6a4c1, #ffb3d9) 1; 
         }
 
-        .letter.show {
-            display: block; 
-            opacity: 1; 
-            transform: none;
-        }
+        .letter.show { display: block; opacity: 1; transform: none; }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- DECORACIONES DE IMAGEN EN LAS ESQUINAS --- */
         .corner-decoration {
             position: absolute;
-            background-size: contain; /* Ajusta la imagen al tamaño del div */
+            background-size: contain;
             background-repeat: no-repeat;
-            z-index: 15; /* Asegura que esté sobre el contenido del borde pero debajo del texto */
-            pointer-events: none; /* No interfiere con clics */
-            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1)); /* Sombra sutil */
+            z-index: 15;
+            pointer-events: none;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));
         }
 
-        /* Imagen 1: Flor rosa con hojas verdes (para las esquinas superiores) */
         .corner-flower-large {
-            width: 130px; /* Tamaño un poco más grande para que destaque */
+            width: 130px;
             height: 130px;
-            background-image: url('	https://w7.pngwing.com/pngs/150/387/png-transparen…e-drawing-ribbon-pink-bow-leaf-sticker-infant.png');
+            background-image: url('https://w7.pngwing.com/pngs/150/387/png-transparen…e-drawing-ribbon-pink-bow-leaf-sticker-infant.png');
         }
 
-        /* Posición para la esquina superior izquierda */
-        .corner-flower-large.top-left {
-            top: -50px; 
-            left: -50px; 
-            transform: rotate(-15deg); /* Ligera rotación decorativa */
-        }
-        /* Posición para la esquina superior derecha */
-        .corner-flower-large.top-right {
-            top: -50px; 
-            right: -50px; 
-            transform: rotate(15deg); /* Ligera rotación decorativa */
-        }
+        .corner-flower-large.top-left { top: -50px; left: -50px; transform: rotate(-15deg); }
+        .corner-flower-large.top-right { top: -50px; right: -50px; transform: rotate(15deg); }
 
-        /* Imagen 2: Grupo de flores rosas pequeñas (para la esquina inferior izquierda) */
         .corner-flowers-small {
-            width: 120px; /* Tamaño adecuado para no tapar tanto */
+            width: 120px;
             height: 90px;
             background-image: url('https://i.pinimg.com/236x/89/21/8a/89218a14f843af56dbd531704c2e5c2f.jpg');
         }
 
-        /* Posición para la esquina inferior izquierda */
-        .corner-flowers-small.bottom-left {
-            bottom: -30px; /* Ajustado para que se vea parte de ella */
-            left: 0px;
-            transform: rotate(0deg);
-        }
+        .corner-flowers-small.bottom-left { bottom: -30px; left: 0px; transform: rotate(0deg); }
 
-        /* FORMATO DE TEXTO (Legibilidad y nueva tipografía) */
         .letter-content {
-            /* CAMBIO DE FUENTE: Usamos Cormorant Garamond para el contenido */
             font-family: 'Cormorant Garamond', serif; 
             line-height: 1.8;
             font-size: 19px; 
             color: #5a4a4a;
-            text-align: center; /* Mantenemos 'justify' o puedes cambiarlo a 'left' */
+            text-align: center;
             position: relative;
             z-index: 12;
             padding: 10px;
-            /* Le damos un poco de peso para que sea más legible en pantallas */
             font-weight: 500; 
         }
 
-        .letter-content p {
-            margin-bottom: 25px;
-            text-indent: 30px;
-        }
+        .letter-content p { margin-bottom: 25px; text-indent: 30px; }
 
         .letter-content::first-letter {
             font-size: 38px;
             font-weight: bold;
             color: #e6a4c1;
-            font-family: 'Dancing Script', cursive; /* Mantenemos el estilo cursivo en la inicial */
+            font-family: 'Dancing Script', cursive;
             line-height: 1;
-            margin-right: -30px; /* Reducido a 2px para acercar la 'D' */
+            margin-right: -30px;
             float: left;
         }
 
-        /* DECORACIÓN LATERAL DE FOTOS (SIN CAMBIOS) */
         .side-photo-column {
             display: flex;
             flex-direction: column;
@@ -338,7 +294,7 @@
             font-size: 12px;
             background-size: cover;
             background-position: center;
-            pointer-events: none; /* Desactivado para evitar la interacción del modal */
+            pointer-events: none;
             cursor: default; 
             transition: transform 0.3s, border-color 0.3s;
             margin: 20px 0;
@@ -350,10 +306,8 @@
         @keyframes popIn { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
         .side-photo-frame:nth-child(2) { animation-delay: 0.2s; }
         .side-photo-frame:nth-child(3) { animation-delay: 0.4s; }
-        .side-photo-frame:hover { transform: scale(1.0) rotate(0deg); border-color: #ffcce0; } /* Animación hover reducida */
+        .side-photo-frame:hover { transform: scale(1.0) rotate(0deg); border-color: #ffcce0; }
 
-
-        /* DECORACIÓN ANIMADA INTERNA DE LA CARTA (SIN CAMBIOS) */
         .letter-decoration { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; z-index: 11; }
         .animated-element { position: absolute; background-color: transparent; animation: float-and-spin 10s infinite linear; opacity: 0.8; z-index: 11; }
         .heart-dec { width: 15px; height: 15px; background-color: #ffcce0; transform: rotate(45deg); }
@@ -362,24 +316,34 @@
         .heart-dec::after { top: 0; left: -7.5px; }
         .star-dec { width: 0; height: 0; border-right: 10px solid transparent; border-bottom: 7px solid #e6a4c1; border-left: 10px solid transparent; transform: rotate(35deg); position: relative; }
         .star-dec::before { content: ''; position: absolute; top: 6px; left: -10px; border-right: 10px solid transparent; border-bottom: 7px solid #e6a4c1; border-left: 10px solid transparent; transform: rotate(-70deg); }
+        .small { transform: scale(0.6) rotate(45deg); opacity: 0.6; }
+        .large { transform: scale(1.3) rotate(45deg); opacity: 0.9; }
         .star-dec.small { border-bottom-color: #ff9ec0; }
         .star-dec.small::before { border-bottom-color: #ff9ec0; }
         .heart-dec.large { background-color: #ff9ec0; }
         .heart-dec.large::before, .heart-dec.large::after { background-color: #ff9ec0; }
 
         @keyframes float-and-spin { 0% { transform: translateY(0) rotate(0deg); opacity: 0.8; } 50% { transform: translateY(-20px) rotate(180deg); opacity: 0.4; } 100% { transform: translateY(0) rotate(360deg); opacity: 0.8; } }
+
+        .proposal-container { margin-top: 35px; text-align: center; z-index: 20; position: relative; }
+        .proposal-title { font-family: 'Dancing Script', cursive; font-size: 34px; color: #b87c9e; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.05); }
+        .buttons-group { display: flex; justify-content: center; align-items: center; gap: 25px; position: relative; }
+        .btn { padding: 12px 35px; font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: bold; border: none; border-radius: 25px; cursor: pointer; transition: transform 0.2s, background-color 0.3s; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+        .btn-yes { background-color: #ff9ec0; color: white; }
+        .btn-yes:hover { transform: scale(1.1); background-color: #ff7ea5; }
+        .no-button-box { width: 110px; height: 50px; display: flex; align-items: center; justify-content: center; }
+        .btn-no { background-color: #e6a4c1; color: white; transition: transform 0.2s ease; }
     </style>
 </head>
 <body>
 <div class="container">
 
     <h1>Una Carta Especial</h1>
-    
     <p class="instructions">Haz clic en el sobre para abrir la carta</p>
     
     <div class="envelope">
         <div class="envelope-front">
-            <img src="https://pngimg.com/d/hello_kitty_PNG22.png" class="kitty-image">
+            <img class="kitty-image" src="https://logos-world.net/wp-content/uploads/2023/04/Hello-Kitty-Logo.png">
         </div>
     </div>
     
@@ -393,7 +357,6 @@
     </div>
     
     <div class="letter-wrapper" id="letter-wrapper">
-        
         <div class="side-photo-column column-left">
             <div class="side-photo-frame" data-photo-id="7"></div>
             <div class="side-photo-frame" data-photo-id="8"></div>
@@ -404,18 +367,24 @@
             <div class="corner-decoration corner-flower-large top-left"></div>
             <div class="corner-decoration corner-flower-large top-right"></div>
             <div class="corner-decoration corner-flowers-small bottom-left"></div>
-            
-            <div class="letter-decoration" id="letter-decoration-container">
-                </div>
+            <div class="letter-decoration" id="letter-decoration-container"></div>
             
             <div class="letter-content">
-                <p>Desde hace tiempo he querido decirte todo lo que siento por ti Fer. Sé que muchas veces no lo demuestro y eso hace que te confundas, sobre todo con mis acciones, pero realmente quiero que esto funcione. Quiero dejar mis inseguridades y miedos atrás. Perdóname si me tardé demasiado en decirte esto, pero tenía muchas dudas de si yo era suficiente para ti, ya que, como sabes, nunca he tenido algo serio con alguien y quería que todo fuera especial. Pero realmente tú eres muy especial para mí, y sé que cualquier cosa que haga contigo lo va a ser.</p>
+                <p>Quería confesarte algo de una manera diferente... así que hice esta pequeña carta pensando únicamente en ti. Tal vez parezca solo código y palabras en una pantalla, pero detrás de cada línea hay sentimientos que nacieron gracias a ti.</p>
+                <p>Porque durante todo este tiempo has sido esa persona que siempre estuvo para mí: atenta, linda, paciente y capaz de escucharme incluso cuando ni yo mismo sabía cómo expresar lo que sentía. En las buenas me hiciste reír, y en las malas me diste fuerzas para seguir adelante.</p>
+                <p>Sin darme cuenta, te volviste parte importante de mi vida... alguien que logró ocupar un lugar muy especial en mi corazón. Y mientras hacía esta carta, entendí que no era solo un detalle; era mi manera de decirte todo aquello que me daba miedo confesar con palabras.</p>
+                <p>Así que aquí va, directo desde mi corazón y escrito para ti: me enamoré de ti. Me enamoré de tu forma de ser, de cómo me cuidas, de cómo haces que todo parezca más bonito cuando estás conmigo.</p>
+                <p>Si esta carta tiene un propósito, es recordarte que, entre millones de personas, tú eres la casualidad más bonita que llegó a mi vida. </p>
                 
-                <p>También me gustaría pedirte perdón por las cosas que te he hecho. Realmente sé que no he sido la mejor persona contigo y te he hecho sufrir mucho, pero eso ya va a cambiar. No voy a volver a tratarte así, te doy mi palabra. Quiero ser una persona en la que confíes y te sientas segura, a la que le puedas contar todo. Quiero ser ese apoyo para ti.</p>
-                
-                <p>Me gustas mucho. Con cada día que paso contigo me enamoro más de ti. Tienes algo que me hace sentir seguro, donde puedo ser yo mismo. También quiero poder salir contigo antes de que me vaya, quiero conocer a esa persona que tanto quiero y amo.</p>
-                
-                <p>Por eso me gustaría preguntarte algo...</p>
+                <div class="proposal-container">
+                    <h2 class="proposal-title">¿Quieres ser mi novia bonito?</h2>
+                    <div class="buttons-group">
+                        <button class="btn btn-yes" id="btn-yes" onclick="celebrate()">Sí</button>
+                        <div class="no-button-box">
+                            <button class="btn btn-no" id="btn-no">No</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -424,7 +393,6 @@
             <div class="side-photo-frame" data-photo-id="11"></div>
             <div class="side-photo-frame" data-photo-id="12"></div>
         </div>
-        
     </div>
 </div>
 
@@ -432,10 +400,9 @@
     id="youtube-player"
     width="0" 
     height="0" 
-    src="https://www.youtube.com/embed/WCDchde-ENk?autoplay=0&loop=1&playlist=WCDchde-ENk&controls=0&mute=1&enablejsapi=1" 
+    src="https://www.youtube.com/embed/WCDchde-ENk?enablejsapi=1&autoplay=0&loop=1&playlist=WCDchde-ENk&controls=0" 
     frameborder="0" 
     allow="autoplay; encrypted-media" 
-    allowfullscreen
     style="position: absolute; left: -9999px;">
 </iframe>
 
@@ -443,50 +410,37 @@
 <div class="sparkles" id="sparkles-container"></div>
 
 <script>
-    // URLs de las fotos proporcionadas (Actualizadas para incluir las laterales)
     const photoUrls = {
-        // Fotos alrededor del sobre (IDs 1-6) - Se mantienen del paso anterior
-        '1': 'https://media.discordapp.net/attachments/1429537769839005985/1430009138158768299/IMG_20250606_224114_940.jpg?ex=68f8374a&is=68f6e5ca&hm=659ee94102da6878dabb260c0a9e015f59687d8d611c5aefaeca4b26606fa5ec&=&format=webp&width=365&height=649',
-        '2': 'https://media.discordapp.net/attachments/1429537769839005985/1430009138158768299/IMG_20250606_224114_940.jpg?ex=68f8374a&is=68f6e5ca&hm=659ee94102da6878dabb260c0a9e015f59687d8d611c5aefaeca4b26606fa5ec&=&format=webp&width=365&height=649',
-        '3': 'https://media.discordapp.net/attachments/1429537769839005985/1430009138158768299/IMG_20250606_224114_940.jpg?ex=68f8374a&is=68f6e5ca&hm=659ee94102da6878dabb260c0a9e015f59687d8d611c5aefaeca4b26606fa5ec&=&format=webp&width=365&height=649',
-        '4': 'https://media.discordapp.net/attachments/1429537769839005985/1430009138158768299/IMG_20250606_224114_940.jpg?ex=68f8374a&is=68f6e5ca&hm=659ee94102da6878dabb260c0a9e015f59687d8d611c5aefaeca4b26606fa5ec&=&format=webp&width=365&height=649',
-        '5': 'https://media.discordapp.net/attachments/1429537769839005985/1430009138158768299/IMG_20250606_224114_940.jpg?ex=68f8374a&is=68f6e5ca&hm=659ee94102da6878dabb260c0a9e015f59687d8d611c5aefaeca4b26606fa5ec&=&format=webp&width=365&height=649',
-        '6': 'https://media.discordapp.net/attachments/1429537769839005985/1430009138158768299/IMG_20250606_224114_940.jpg?ex=68f8374a&is=68f6e5ca&hm=659ee94102da6878dabb260c0a9e015f59687d8d611c5aefaeca4b26606fa5ec&=&format=webp&width=365&height=649',
-        
-        // Fotos laterales (Círculos, IDs 7-12) - ¡NUEVAS FOTOS!
-        '7': 'https://media.discordapp.net/attachments/1429537769839005985/1429626306638778469/pink-heart-png-images-valentine-600nw-2412862513.png?ex=68f77b80&is=68f62a00&hm=0fddbef91bb7fc5ecd2ca3dbbb31464f9d4946971f1fe66c46b1ad4fd9303bbd&=&format=webp&quality=lossless&width=546&height=546',
-        '8': 'https://media.discordapp.net/attachments/1429537769839005985/1429625423741976656/469c475d2e7d784c19a59523d553821b.png?ex=68f77aae&is=68f6292e&hm=852d17ad0d3b3685491477c961b7a651aad02309a041722c6105e42929e40172&=&format=webp&quality=lossless&width=546&height=546',
-        '9': 'https://media.discordapp.net/attachments/1429537769839005985/1429625517992050829/e9f8ebe0fce02ac2c182160401620e02.png?ex=68f77ac4&is=68f62944&hm=91175f7a2c17d39dfb2e3c63dceaf095eeabd282726f765ebbef9963cbe9ab03&=&format=webp&quality=lossless&width=546&height=597',
-        '10': 'https://cdn.discordapp.com/attachments/1429537769839005985/1429982580999983215/IMG-20250802-WA0000.jpg?ex=68f81e8f&is=68f6cd0f&hm=6900e4b9ad5aa1589f8cd16fc1838e8d3d67b845fad8e141679fd9f7a13a3390&',
-        '11': 'https://media.discordapp.net/attachments/1429537769839005985/1429626052640247888/isla_500x500.png?ex=68f77b44&is=68f629c4&hm=708b99532df8135992a980753ab62795c94ea2a464a24b3b901291ec3b856079&=&format=webp&quality=lossless',
-        '12': 'https://media.discordapp.net/attachments/1429537769839005985/1429625950626119784/dfe44b683f7b7da3770be7afa2f946d7.png?ex=68f77b2b&is=68f629ab&hm=5461a1075301d92b9d77b706d18110e55fe07bf1707d1fe6c5ca25f30cb63e24&=&format=webp&quality=lossless&width=559&height=545'
+        '1': 'https://media.discordapp.net/attachments/1429537769839005985/1513326634076344573/54167851-2CBA-4737-987D-01E7217686AF.jpg?ex=6a2752c1&is=6a260141&hm=8ab7a194c31abcc0e5023b6022288946d0cd71d951190db6d7224f76b2385a71&=&format=webp&width=659&height=371',
+        '2': 'https://media.discordapp.net/attachments/1429537769839005985/1513326633711571004/796ABEED-5B02-4B2F-AF0B-BA5F2B5DE6E2.jpg?ex=6a2752c1&is=6a260141&hm=828daa98705098ef76ae9dae2aaaf4c9b81c3edc3badc06c24b77197535048f2&=&format=webp&width=235&height=457',
+        '3': 'https://media.discordapp.net/attachments/1429537769839005985/1513329343399464970/image.jpg?ex=6a275547&is=6a2603c7&hm=f027b59f5bb753aecb7cdddaf9aad59e9d2221c43d6def00c7e1755bb87f28d3&=&format=webp&width=518&height=457',
+        '4': 'https://media.discordapp.net/attachments/1429537769839005985/1513326634391048202/C4384A72-2200-40A3-81B3-92D4AAF0A91F.jpg?ex=6a2752c1&is=6a260141&hm=166e16fbdb5d3f49900ad20bccbbf61b8079a90bc380eb20f4235659dce12adc&=&format=webp&width=659&height=371',
+        '5': 'https://media.discordapp.net/attachments/1429537769839005985/1513326633283620915/5E18DE46-EA54-4361-A572-A7003904E55C.jpg?ex=6a2752c1&is=6a260141&hm=e026fa78480d46bf31b70b534e33a5a4e7da45b0aac70565e4e387a86d4df9e9&=&format=webp&width=452&height=457',
+        '6': 'https://media.discordapp.net/attachments/1429537769839005985/1430009138158768299/IMG_20250606_224114_940.jpg?ex=6a26c78a&is=6a25760a&hm=a636299fc1f5c5e05f8b93183a96872f2d9460f761c36366bf09028b1ef27140&=&format=webp&width=267&height=475',
+        '7': 'https://media.discordapp.net/attachments/1429537769839005985/1429625423741976656/469c475d2e7d784c19a59523d553821b.png?ex=6a26b3ae&is=6a25622e&hm=9dc756aacaa10c9d9673d2f743f5b5ceb8dddf75742a0a940db1e1cce2eee561&=&format=webp&quality=lossless&width=457&height=457',
+        '8': 'https://media.discordapp.net/attachments/1429537769839005985/1429625517992050829/e9f8ebe0fce02ac2c182160401620e02.png?ex=6a26b3c4&is=6a256244&hm=c9883f1f80e1a022553853ed671ad57e01abebf3d4a7a1bb90cce3500fbc18e0&=&format=webp&quality=lossless&width=418&height=457',
+        '9': 'https://media.discordapp.net/attachments/1429537769839005985/1429625950626119784/dfe44b683f7b7da3770be7afa2f946d7.png?ex=6a26b42b&is=6a2562ab&hm=0e77e06221df6c352dc313fbe1eeacfaa59bd4fb103857598cbe039c6ae40b14&=&format=webp&quality=lossless&width=469&height=457',
+        '10': 'https://media.discordapp.net/attachments/1429537769839005985/1429982580999983215/IMG-20250802-WA0000.jpg?ex=6a26aecf&is=6a255d4f&hm=43b2ef6088edb616e05c0bec57b6431768649c0ea720abf6e8ad2c083b284a8c&=&format=webp&width=609&height=457',
+        '11': 'https://media.discordapp.net/attachments/1429537769839005985/1429626052640247888/isla_500x500.png?ex=6a26b444&is=6a2562c4&hm=b5152c260033baf1e96ee20ef6a7880571bb3c361e83747bd833f41f277738e3&=&format=webp&quality=lossless&width=457&height=457',
+        '12': 'https://media.discordapp.net/attachments/1429537769839005985/1429626306638778469/pink-heart-png-images-valentine-600nw-2412862513.png?ex=6a26b480&is=6a256300&hm=b8be27666723c709cbeb6a52c399ad230fc87beaadaa9922d47c246eb1e1b20e&=&format=webp&quality=lossless&width=457&height=457'
     };
 
-    // Obtenemos todos los elementos photo-frame (los 6 alrededor del sobre)
     const allPhotoFramesBefore = document.querySelectorAll('.photos-around .photo-frame');
-    // Obtenemos todos los elementos side-photo-frame (los 6 círculos laterales)
     const allPhotoFramesAfter = document.querySelectorAll('.side-photo-column .side-photo-frame');
     const allFrames = [...allPhotoFramesBefore, ...allPhotoFramesAfter];
 
-
-    // Función para cargar las fotos iniciales
     function loadInitialPhotos() {
         allFrames.forEach(frame => {
             const id = frame.getAttribute('data-photo-id');
             const url = photoUrls[id];
-            
             if (url) {
-                // Asigna la URL como fondo y limpia el contenido de placeholder (el <span>)
                 frame.style.backgroundImage = `url(${url})`;
                 frame.innerHTML = '';
             }
-            // Los elementos pre-cargados ya no necesitan ser clickables
             frame.style.pointerEvents = 'none'; 
         });
     }
 
-
-    // --- Animaciones y lógica de la Carta ---
     const heartsContainer = document.getElementById('hearts-container');
     for (let i = 0; i < 20; i++) {
         const heart = document.createElement('div');
@@ -501,14 +455,12 @@
     function createLetterDecorations() {
         const decContainer = document.getElementById('letter-decoration-container');
         const count = 30;
-
         for (let i = 0; i < count; i++) {
             const isHeart = Math.random() < 0.5;
             const element = document.createElement('div');
             element.classList.add('animated-element');
             if (isHeart) { element.classList.add('heart-dec'); } else { element.classList.add('star-dec'); }
             if (Math.random() < 0.3) { element.classList.add('small'); } else if (Math.random() > 0.7) { element.classList.add('large'); }
-            // Ajustado para que las decoraciones internas no se superpongan con la 'D' inicial
             element.style.left = `${30 + Math.random() * 60}%`;  
             element.style.top = `${30 + Math.random() * 60}%`;  
             element.style.animationDelay = `-${Math.random() * 10}s`;
@@ -518,7 +470,6 @@
     }
 
     const sparklesContainer = document.getElementById('sparkles-container');
-
     function createSparkles() {
         for (let i = 0; i < 30; i++) {
             const sparkle = document.createElement('div');
@@ -534,13 +485,11 @@
         }, 1000);
     }
 
-    // --- Lógica de apertura y Música ---
     const envelope = document.querySelector('.envelope');
     const letter = document.getElementById('theLetter');
     const letterWrapper = document.getElementById('letter-wrapper');
     const photosAround = document.getElementById('photos-around');
-    const youtubePlayer = document.getElementById('youtube-player');
-
+    const iframe = document.getElementById('youtube-player'); // Elemento de YouTube asignado
 
     envelope.addEventListener('click', function() {
         if (!envelope.classList.contains('open')) {
@@ -549,13 +498,8 @@
             sparklesContainer.style.display = 'block';
             createSparkles();
             
-            // 1. Desmutear y reproducir la música de YouTube
-            // Usamos postMessage para interactuar con el reproductor de YouTube, ya que los métodos directos pueden fallar.
-            // La API de YouTube necesita ser cargada (lo cual ocurre automáticamente)
-            const iframe = document.getElementById('youtube-player');
-            if (iframe) {
-                // El video fue cargado con ?mute=1. Al hacer clic, enviamos la orden de desmutear y empezar a reproducir.
-                iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+            // FUNCIÓN DE YOUTUBE: Activa la reproducción al abrir el sobre
+            if (iframe && iframe.contentWindow) {
                 iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
             }
             
@@ -567,10 +511,24 @@
         }
     });
 
-    // Carga todas las fotos al iniciar la página
-    document.addEventListener('DOMContentLoaded', loadInitialPhotos);
-    
-</script>
+    const btnNo = document.getElementById('btn-no');
+    function moveButtonNo() {
+        const randomX = (Math.random() - 0.5) * 300;
+        const randomY = (Math.random() - 0.5) * 150;
+        btnNo.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    }
 
+    btnNo.addEventListener('mouseenter', moveButtonNo);
+    btnNo.addEventListener('touchstart', function(e) {
+        e.preventDefault(); 
+        moveButtonNo();
+    });
+
+    function celebrate() {
+        alert('¡Sabiiaaa que ibas a decir que sí! ¡Gracias por hacerme el más feliz! ❤️');
+    }
+
+    document.addEventListener('DOMContentLoaded', loadInitialPhotos);
+</script>
 </body>
 </html>
